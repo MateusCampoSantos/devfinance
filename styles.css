@@ -1,6 +1,8 @@
 /* Global Style */
 :root {
   --darck-blue: #363f5f;
+  --green: #49aa26;
+  --light-green: #3dd705;
 }
 
 * {
@@ -45,12 +47,29 @@ h2 {
 
 /* Links & Buttons Style*/
 a {
-  color: #49aa26;
+  color: var(--green);
   text-decoration: none;
 }
 
 a:hover {
-  color: #3dd705;
+  color: var(--light-green);
+}
+
+button {
+  width: 100%;
+  height: 50%;
+
+  border: none;
+  color: white;
+  background: var(--green);
+  padding: 0;
+  border-radius: 00.25rem;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--light-green);
 }
 
 .button.new {
@@ -102,7 +121,7 @@ header {
 }
 
 .card.total {
-  background: #49aa26;
+  background: var(--green);
   color: white;
 }
 
@@ -188,6 +207,41 @@ td.expense {
   padding: 2.4rem;
 }
 
+/* Form Style*/
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+
+  padding: 00.8rem;
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
+}
 /* Footer Style*/
 footer {
   text-align: center;
