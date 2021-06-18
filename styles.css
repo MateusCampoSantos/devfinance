@@ -31,11 +31,27 @@ body {
   margin: auto;
 }
 
+/* Titles Style*/
 h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
   color: var(--darck-blue);
   font-weight: normal;
+}
+
+/* Links & Buttons Style*/
+a {
+  color: #49aa26;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3dd705;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
 }
 
 /* Header Style*/
