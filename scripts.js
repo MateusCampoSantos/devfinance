@@ -40,22 +40,6 @@ const Transaction = {
   },
 };
 
-const Utils = {
-  formatCurrency(value) {
-    const signal = Number(value) < 0 ? "-" : "";
-
-    value = String(value).replace(/\D/g, "");
-    value = Number(value) / 100;
-
-    value = value.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-
-    return signal + value;
-  },
-};
-
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
 
@@ -76,6 +60,22 @@ const DOM = {
         <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
         `;
     return html;
+  },
+};
+
+const Utils = {
+  formatCurrency(value) {
+    const signal = Number(value) < 0 ? "-" : "";
+
+    value = String(value).replace(/\D/g, "");
+    value = Number(value) / 100;
+
+    value = value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    return signal + value;
   },
 };
 
