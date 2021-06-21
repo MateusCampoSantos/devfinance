@@ -10,17 +10,17 @@ const Modal = {
 const Transaction = {
   all: [
     {
-      descrption: "Luz",
+      description: "Luz",
       amount: -50000,
       date: "23/01/2021",
     },
     {
-      descrption: "Website",
+      description: "Website",
       amount: 500000,
       date: "23/01/2021",
     },
     {
-      descrption: "Internet",
+      description: "Internet",
       amount: -20000,
       date: "23/01/2021",
     },
@@ -74,7 +74,7 @@ const DOM = {
     const amount = Utils.formatCurrency(transaction.amount);
 
     const html = `
-        <td class="date">${transaction.descrption}</td>
+        <td class="date">${transaction.description}</td>
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
@@ -108,7 +108,6 @@ const Utils = {
 
   formatDate(date) {
     const splittedDate = date.split("-");
-
     return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
   },
 
@@ -134,7 +133,7 @@ const Form = {
 
   getValues() {
     return {
-      descrption: Form.description.value,
+      description: Form.description.value,
       amount: Form.amount.value,
       date: Form.date.value,
     };
@@ -153,7 +152,7 @@ const Form = {
   },
 
   formatValues() {
-    let { description, amount, date } = Form.getValues;
+    let { description, amount, date } = Form.getValues();
 
     amount = Utils.formatAmount(amount);
     date = Utils.formatDate(date);
@@ -178,6 +177,8 @@ const Form = {
       Form.validateField();
       const transaction = Form.formatValues();
       Transaction.add(transaction);
+      Form.clearFields();
+      Modal.close();
     } catch (error) {
       alert(error.message);
     }
