@@ -100,6 +100,12 @@ const DOM = {
 };
 
 const Utils = {
+  formatAmount(value) {
+    value = Number(value) * 100;
+
+    return value;
+  },
+
   formatCurrency(value) {
     const signal = Number(value) < 0 ? "-" : "";
 
@@ -139,13 +145,19 @@ const Form = {
       throw new Error("Por favor, preencha todos os campos");
     }
   },
-  formatData() {},
+
+  formatValues() {
+    let { description, amount, date } = Form.getValues;
+
+    amount = Utils.formatAmount(amount);
+  },
+
   submit(event) {
     event.preventDefault();
 
     try {
       Form.validateField();
-      Form.formatData();
+      Form.formatValues();
     } catch (error) {
       alert(error.message);
     }
