@@ -41,14 +41,17 @@ const Transaction = {
 };
 
 const DOM = {
+  addTransaction(transaction, index) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = DOM.innerHTMLTransaction();
+  },
   innerHTMLTransaction() {
     const html = `
-        <tr>
-              <td class="date">Luz</td>
-              <td class="expense">- R$ 500,00</td>
-              <td class="date">23/01/2021</td>
-              <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
-        </tr>
+        <td class="date">Luz</td>
+        <td class="expense">- R$ 500,00</td>
+        <td class="date">23/01/2021</td>
+        <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
         `;
+    return html;
   },
 };
