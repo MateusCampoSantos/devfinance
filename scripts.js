@@ -40,6 +40,22 @@ const Transaction = {
   },
 };
 
+const Utils = {
+  formatCurrency(value) {
+    const signal = Number(value) < 0 ? "-" : "";
+
+    value = String(value).replace(/\D/g, "");
+    value = Number(value) / 100;
+
+    value = value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    return signal + value;
+  },
+};
+
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
 
@@ -49,9 +65,13 @@ const DOM = {
     DOM.transactionsContainer.appendChild(tr);
   },
   innerHTMLTransaction(transaction) {
+    const CSSclass = transaction.amount > 0 ? "income" : "expense";
+
+    const amount = Utils.formatCurrency(transaction.amount);
+
     const html = `
         <td class="date">${transaction.descrption}</td>
-        <td class="expense">${transaction.amount}</td>
+        <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
         `;
