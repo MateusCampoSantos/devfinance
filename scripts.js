@@ -106,6 +106,12 @@ const Utils = {
     return value;
   },
 
+  formatDate(date) {
+    const splittedDate = date.split("-");
+
+    return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
+  },
+
   formatCurrency(value) {
     const signal = Number(value) < 0 ? "-" : "";
 
@@ -150,6 +156,19 @@ const Form = {
     let { description, amount, date } = Form.getValues;
 
     amount = Utils.formatAmount(amount);
+    date = Utils.formatDate(date);
+
+    return {
+      description,
+      amount,
+      date,
+    };
+  },
+
+  clearFields() {
+    Form.description.value = "";
+    Form.amount.value = "";
+    Form.date.value = "";
   },
 
   submit(event) {
@@ -157,7 +176,8 @@ const Form = {
 
     try {
       Form.validateField();
-      Form.formatValues();
+      const transaction = Form.formatValues();
+      Transaction.add(transaction);
     } catch (error) {
       alert(error.message);
     }
