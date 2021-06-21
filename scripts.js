@@ -39,3 +39,16 @@ const Transaction = {
     // Entradas - saídas
   },
 };
+
+const DOM = {
+  innerHTMLTransaction() {
+    const html = `
+        <tr>
+              <td class="date">Luz</td>
+              <td class="expense">- R$ 500,00</td>
+              <td class="date">23/01/2021</td>
+              <th><img src="./assets/minus.svg" alt="Remover Transação" /></th>
+        </tr>
+        `;
+  },
+};
